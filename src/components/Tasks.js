@@ -1,11 +1,11 @@
+import Task from "./Task";
+
 const Tasks = (props) => {
 	return (
 		<>
-			<ul>
-				{props.tasks.map((element) => (
-					<li key={element.id}>{element.text}</li>
-				))}
-			</ul>
+			{props.tasks.map((element) => (
+				<Task key={element.id} tasks={element} />
+			))}
 		</>
 	);
 };
