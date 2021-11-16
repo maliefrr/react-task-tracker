@@ -2,24 +2,24 @@ import { useState } from "react";
 
 const AddTask = (props) => {
 	const [text, setText] = useState("");
-	const [date, setDate] = useState("");
+	const [day, setDay] = useState("");
 	const [reminder, setReminder] = useState(false);
 
 	const onSubmit = (e) => {
 		e.preventDefault();
 
-		if (!text || !date) {
+		if (!text || !day) {
 			alert("Please fill all the form");
 			return;
 		}
 		props.onAdd({
 			text,
-			date,
+			day,
 			reminder,
 		});
 
 		setText("");
-		setDate("");
+		setDay("");
 		setReminder(false);
 	};
 
@@ -31,7 +31,7 @@ const AddTask = (props) => {
 			</div>
 			<div className="form-control">
 				<label>Date </label>
-				<input type="text" placeholder="Add Date" value={date} onChange={(e) => setDate(e.target.value)} />
+				<input type="text" placeholder="Add Date" value={day} onChange={(e) => setDay(e.target.value)} />
 			</div>
 			<div className="form-control form-control-check">
 				<label>Set Reminder</label>
