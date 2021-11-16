@@ -25,13 +25,24 @@ function App() {
 	]);
 
 	const deleteTask = (id) => {
-		console.log("delete", id);
+		setTask(tasks.filter((el) => el.id !== id));
+	};
+
+	const toggleReminder = (id) => {
+		setTask(tasks.map((task) => (task.id === id ? { ...task, reminder: !task.reminder } : task)));
 	};
 
 	return (
 		<div className="container">
 			<Header />
-			<Tasks tasks={tasks} onDelete={deleteTask} />
+			{tasks.length > 0 ? (
+				<Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} />
+			) : (
+				<div className="alert alert-danger alert-dismissible fade show" role="alert">
+					No Task to Show
+					<button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+				</div>
+			)}
 		</div>
 	);
 }

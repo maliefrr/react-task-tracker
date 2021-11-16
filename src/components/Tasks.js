@@ -4,7 +4,7 @@ const Tasks = (props) => {
 	return (
 		<>
 			{props.tasks.map((element) => (
-				<Task key={element.id} tasks={element} onDelete={props.onDelete} />
+				<Task key={element.id} tasks={element} onDelete={props.onDelete} onToggle={props.onToggle} />
 			))}
 		</>
 	);
